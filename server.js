@@ -1,10 +1,13 @@
+const path = require('path');
 const bodyParser = require('body-parser');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('.'));
+
 const YOUR_DOMAIN = 'https://tough-reminder.herokuapp.com/';
+const port = process.env.PORT || 4242;
 app.post('/create-checkout-session', async (req, res) => {
   const serialize = function (obj) {
     var str = [];
@@ -42,7 +45,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 });
 
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -50,6 +53,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
-}
+// }
 
-app.listen(4242, () => console.log('Running on port 4242'));
+app.listen(port, () => console.log(`Running on port ${port}`));
