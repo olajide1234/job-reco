@@ -8,11 +8,12 @@ import './App.css';
 import { Col, Container, Row, Form, Button, Spinner, Image } from 'react-bootstrap';
 import { useFormik } from 'formik';
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+const urldep = "https://tough-reminder.herokuapp.com/"
 
 const Message = ({ message }) => (
   <div style={{ fontFamily: 'monospace', wordSpacing: '-3px' }}>
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="https://serene-jackson-4641c5.netlify.app/">Goal Bully</Navbar.Brand>
+      <Navbar.Brand href={urldep}>Goal Bully</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text >
@@ -22,7 +23,7 @@ const Message = ({ message }) => (
     </Navbar>
     <div style={{ paddingTop: '15%', textAlign: 'center' }}>
       <h2 style={{ paddingTop: '5%' }}>{message}</h2>
-      <Button onClick={() => window.location.href = 'https://serene-jackson-4641c5.netlify.app/'}>Go Home</Button>
+      <Button onClick={() => window.location.href = urldep}>Go Home</Button>
     </div>
   </div>
 );
@@ -199,7 +200,7 @@ function App() {
     return (
       <div>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="https://serene-jackson-4641c5.netlify.app/">Goal Bully</Navbar.Brand>
+          <Navbar.Brand href={urldep}>Goal Bully</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text >
@@ -218,7 +219,7 @@ function App() {
   return (
     <div className="App" style={{ fontFamily: 'monospace', wordSpacing: '-3px' }}>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="https://serene-jackson-4641c5.netlify.app/">Goal Bully</Navbar.Brand>
+        <Navbar.Brand href={urldep}>Goal Bully</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text >

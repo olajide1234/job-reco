@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('.'));
-const YOUR_DOMAIN = 'https://serene-jackson-4641c5.netlify.app/';
+const YOUR_DOMAIN = 'https://tough-reminder.herokuapp.com/';
 app.post('/create-checkout-session', async (req, res) => {
   const serialize = function (obj) {
     var str = [];
@@ -41,4 +41,15 @@ app.post('/create-checkout-session', async (req, res) => {
   }
 
 });
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
 app.listen(4242, () => console.log('Running on port 4242'));
