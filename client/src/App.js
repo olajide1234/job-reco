@@ -12,7 +12,7 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 const Message = ({ message }) => (
   <div style={{ fontFamily: 'monospace', wordSpacing: '-3px' }}>
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#">Goal Bully</Navbar.Brand>
+      <Navbar.Brand href="https://serene-jackson-4641c5.netlify.app/">Goal Bully</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text >
@@ -22,7 +22,7 @@ const Message = ({ message }) => (
     </Navbar>
     <div style={{ paddingTop: '15%', textAlign: 'center' }}>
       <h2 style={{ paddingTop: '5%' }}>{message}</h2>
-      <Button onClick={() => window.location.href = '#'}>Go Home</Button>
+      <Button onClick={() => window.location.href = 'https://serene-jackson-4641c5.netlify.app/'}>Go Home</Button>
     </div>
   </div>
 );
@@ -199,7 +199,7 @@ function App() {
     return (
       <div>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#">Goal Bully</Navbar.Brand>
+          <Navbar.Brand href="https://serene-jackson-4641c5.netlify.app/">Goal Bully</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text >
@@ -218,7 +218,7 @@ function App() {
   return (
     <div className="App" style={{ fontFamily: 'monospace', wordSpacing: '-3px' }}>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#">Goal Bully</Navbar.Brand>
+        <Navbar.Brand href="https://serene-jackson-4641c5.netlify.app/">Goal Bully</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text >

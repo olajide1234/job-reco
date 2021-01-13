@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('.'));
-const YOUR_DOMAIN = 'http://localhost:3000/';
+const YOUR_DOMAIN = 'https://serene-jackson-4641c5.netlify.app/';
 app.post('/create-checkout-session', async (req, res) => {
   const serialize = function (obj) {
     var str = [];
