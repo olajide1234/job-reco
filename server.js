@@ -1,11 +1,11 @@
 const path = require('path');
 const bodyParser = require('body-parser');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('.'));
-
+console.log('using this stripe key --->', process.env.STRIPE_KEY  )
 const YOUR_DOMAIN = 'https://goalbully.com/';
 const port = process.env.PORT || 4242;
 app.post('/create-checkout-session', async (req, res) => {

@@ -6,7 +6,7 @@ import dog from './remind_bull_350.jpeg';
 import './App.css';
 import { Col, Container, Row, Form, Button, Spinner, Image } from 'react-bootstrap';
 import { useFormik } from 'formik';
-const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+const stripePromise = loadStripe("pk_live_51I8VuHGcuFzCPgillATVKVySWzt2DlsSoVLyT4nmAFNYuQedazFOYtSPpqgj8LNUZ1p3DeHFGHgFO5UJlGTfLMq200RuXnBvhE");
 const urldep = "https://goalbully.com/"
 
 const Message = ({ message }) => (
