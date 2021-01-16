@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; 
-import Navbar from 'react-bootstrap/Navbar';
 import { loadStripe } from "@stripe/stripe-js";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import dog from './remind_bull_350.jpeg'
+import dog from './remind_bull_350.jpeg';
 import './App.css';
 import { Col, Container, Row, Form, Button, Spinner, Image } from 'react-bootstrap';
 import { useFormik } from 'formik';
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
-const urldep = "https://tough-reminder.herokuapp.com/"
+const urldep = "https://goalbully.com/"
 
 const Message = ({ message }) => (
   <div style={{ fontFamily: 'monospace', wordSpacing: '-3px' }}>
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href={urldep}>Goal Bully</Navbar.Brand>
-      <Navbar.Toggle />
-      <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text >
-          <a href="mailto:yfwidget@gmail.com" >Contact us </a>
-        </Navbar.Text>
-      </Navbar.Collapse>
-    </Navbar>
     <div style={{ paddingTop: '15%', textAlign: 'center' }}>
       <h2 style={{ paddingTop: '5%' }}>{message}</h2>
       <Button onClick={() => window.location.href = urldep}>Go Home</Button>
@@ -103,7 +93,6 @@ function App() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
-      console.log('success order data', getAllUrlParams());
       async function postData() {
 
         const response = await axios.post('https://sheetdb.io/api/v1/04rdl1glvaj42', {
@@ -156,7 +145,7 @@ function App() {
       finishdate: '',
       fname: '',
       goal: '',
-      harass: '',
+      harass: 'private',
       instagramhandle: '',
       lname: '',
       signalnumber: '',
@@ -177,7 +166,6 @@ function App() {
           body: JSON.stringify(values)
         });
         const session = await response.json();
-        // When the customer clicks on the button, redirect them to Checkout.
         const result = await stripe.redirectToCheckout({
           sessionId: session.id,
         });
@@ -198,45 +186,24 @@ function App() {
 
   if (loading) {
     return (
-      <div>
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href={urldep}>Goal Bully</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text >
-              <a href="mailto:yfwidget@gmail.com" >Contact us </a>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Navbar>
-      
       <div style={{ paddingTop: '15%', textAlign: 'center' }}>
           <Spinner style={{ width: '5rem', height: '5rem' }} animation="grow" />
-      </div>
       </div>
     )
   }
 
   return (
-    <div className="App" style={{ fontFamily: 'monospace', wordSpacing: '-3px' }}>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href={urldep}>Goal Bully</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text >
-            <a href="mailto:yfwidget@gmail.com" >Contact us </a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
+    <div className="App" style={{ fontFamily: 'monospace', wordSpacing: '-3px', paddingBottom: '10px'}}>
 
       <Row style={{ height: '80vh'}}>
         { 
           !showform ?
-          <Col style={{ textAlign: 'center', alignSelf: 'center', }} lg={true}>
-            <h1>We will remind, bully, harass and intimidate you <br></br>until you acheive your goal!</h1>
+          <Col style={{ textAlign: 'center', alignSelf: 'center', padding: '25px' }} lg={true}>
+              <h1 style={{marginTop: '3%'}}>We will remind, bully, harass and intimidate you <br></br>until you acheive your goal!</h1>
             <h3>
               &#128520;
                 </h3>
-            <Button style={{ marginTop: '2%' }} size="lg" onClick={() => setShowform(true)}>Try now >></Button>
+              <Button style={{ marginTop: '2%', marginBottom: '20px' }} size="lg" onClick={() => setShowform(true)}>Try now >></Button>
         </Col> 
           : <Col style={{ textAlign: 'center',  paddingTop: '2%' }}>
             <Image src={dog} roundedCircle />
@@ -410,15 +377,12 @@ function App() {
                   />
                 </Form.Group>
               </Form.Row>
-
-
               <Button type="submit">{buttonloading ? 'Loading…' : 'Submit and pay $5'}</Button>
             </Form>
           </Container> 
         </Col>
           : null} 
       </Row>
-
     </div>
   );
 }

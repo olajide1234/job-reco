@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('.'));
 
-const YOUR_DOMAIN = 'https://tough-reminder.herokuapp.com/';
+const YOUR_DOMAIN = 'https://goalbully.com/';
 const port = process.env.PORT || 4242;
 app.post('/create-checkout-session', async (req, res) => {
   const serialize = function (obj) {
@@ -45,7 +45,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 });
 
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -53,6 +53,6 @@ app.post('/create-checkout-session', async (req, res) => {
   app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
-// }
+}
 
 app.listen(port, () => console.log(`Running on port ${port}`));
